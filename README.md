@@ -1,6 +1,16 @@
-# PAR_WS2526
+# PAR_WS2526 - AR Language Tutor
 
-Repository for Praktikum Augmented Reality.
+An **AR-based language learning application** powered by **LLM (Large Language Model)** technology for immersive conversational practice.
+
+## Project Overview
+
+This Unity project combines:
+- **Augmented Reality (Meta Quest)** for immersive learning environments
+- **Ollama/Llama3** for intelligent conversational AI
+- **Whisper** for accurate speech-to-text recognition
+- **AllTalk TTS** for natural text-to-speech synthesis
+
+The application provides an interactive language tutor NPC that can engage in conversations, correct grammar, teach vocabulary, and provide pronunciation feedback.
 
 ## Getting Started
 
@@ -13,6 +23,8 @@ Before cloning the repository, ensure you have the following installed:
 1.  **Git**: [Download Git](https://git-scm.com/downloads)
 2.  **Git LFS**: [Download Git LFS](https://git-lfs.com/)
 3.  **Unity Hub & Editor**: Install the version specified in `ProjectSettings/ProjectVersion.txt` (or the latest stable release if not specified).
+4.  **Ollama with Llama3**: [Download Ollama](https://ollama.ai/) and run `ollama pull llama3`
+5.  **AllTalk TTS**: [AllTalk TTS](https://github.com/erew123/alltalk_tts/tree/alltalkbeta)
 
 ### Installation
 
@@ -29,13 +41,79 @@ Before cloning the repository, ensure you have the following installed:
     ```
 
 3.  **Pull LFS Assets**:
-    If you cloned the repository before installing Git LFS, or if assets appear missing (e.g., pink textures), run:
-    ```bash
-    git lfs pull
-    ```
 
-### Opening the Project
+### Setting Up the Application
 
+**For detailed setup instructions, see:**
+- [**SETUP_GUIDE.md**](Assets/_Project/SETUP_GUIDE.md) - Step-by-step configuration guide
+- [**ARCHITECTURE.md**](Assets/_Project/ARCHITECTURE.md) - Complete architecture documentation
+
+**Quick Start:**
+1. Create configuration assets: `Assets → Create → Language Tutor → [Config Type]`
+2. Start external services:
+   - Ollama: `ollama run llama3`
+   - AllTalk TTS: Run server on port 7851
+3. Configure NPCController and NPCView in your scene
+4. Press Play and click "Talk" to begin conversation
+   Project Architecture
+
+The codebase has been refactored into a clean, maintainable architecture:
+
+```
+Assets/_Project/Scripts/
+├── Core/          # Main application logic (NPCController, ConversationPipeline)
+├── Services/      # Interface-based services (LLM, TTS, STT)
+├── Actions/       # Generic LLM action system (Command Pattern)
+├── Data/          # Configuration ScriptableObjects
+├── UI/            # User interface components
+└── Utilities/     # Helper utilities
+```
+
+**Key Features:**
+- ✅ **Service-Oriented Architecture** with dependency injection
+- ✅ **Generic LLM Action System** for extensible AI behaviors
+- ✅ **Configuration via ScriptableObjects** (no hardcoded values)
+- ✅ **Multi-turn conversation history** for context-aware responses
+- ✅ **Event-driven communication** for loose coupling
+- ✅ **Automatic retry logic** with error handling
+
+## Available Features
+
+- **Chat Mode**: General conversation practice
+- **Grammar Check**: Automatic grammar correction with explanations
+- **Vocabulary Teaching**: Word definitions and usage examples
+- **Conversation Practice**: Scenario-based dialogue (ordering food, asking directions, etc.)
+- **Multi-language Support**: Configurable target language
+- **Adaptive Difficulty**: CEFR levels (A1-C2)
+- **Speech Recognition**: Real-time transcription with confidence scoring
+- **Natural TTS**: Human-like speech synthesis with audio caching
+
+## Contributing
+
+When adding new large binary files, ensure they are tracked by LFS. You can add new file types using:
+```bash
+git lfs track "*.extension"
+```
+This will update the `.gitattributes` file.
+
+### Development Guidelines
+
+When contributing code:
+1. Follow the existing architecture patterns
+2. Use interfaces for new service implementations
+3. Add configuration to ScriptableObjects
+4. Emit events for component communication
+5. Add XML documentation comments
+6. See [ARCHITECTURE.md](Assets/_Project/ARCHITECTURE.md) for detailed guidelines
+
+## Documentation
+
+- **[SETUP_GUIDE.md](Assets/_Project/SETUP_GUIDE.md)** - Complete setup instructions
+- **[ARCHITECTURE.md](Assets/_Project/ARCHITECTURE.md)** - Architecture overview and extension guide
+
+## License
+
+[Your License Here]
 1.  Open **Unity Hub**.
 2.  Click **Add** and select the `PAR_WS2526` folder.
 3.  Click on the project name to open it in the Unity Editor.
