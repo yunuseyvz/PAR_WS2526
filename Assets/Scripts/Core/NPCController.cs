@@ -81,7 +81,7 @@ namespace LanguageTutor.Core
             }
 
             // Initialize services
-            _llmService = new OllamaService(llmConfig, this);
+            _llmService = LLMServiceFactory.CreateService(llmConfig, this);
             _ttsService = new AllTalkService(ttsConfig, this);
             _sttService = new WhisperService(sttConfig, whisperManager);
 

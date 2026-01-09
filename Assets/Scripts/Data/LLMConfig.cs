@@ -3,21 +3,41 @@ using UnityEngine;
 namespace LanguageTutor.Data
 {
     /// <summary>
+    /// LLM provider types.
+    /// </summary>
+    public enum LLMProvider
+    {
+        Ollama,
+        Gemini,
+        OpenAI,
+        Azure
+    }
+
+    /// <summary>
     /// Configuration for Large Language Model service.
     /// Create via: Assets -> Create -> Language Tutor -> LLM Config
     /// </summary>
     [CreateAssetMenu(fileName = "LLMConfig", menuName = "Language Tutor/LLM Config", order = 1)]
     public class LLMConfig : ScriptableObject
     {
+        [Header("Provider Selection")]
+        [Tooltip("Choose the LLM provider to use")]
+        public LLMProvider provider = LLMProvider.Ollama;
+
         [Header("Service Configuration")]
-        [Tooltip("Base URL for the LLM service (e.g., http://127.0.0.1:11434)")]
+        [Tooltip("Base URL for the LLM service (e.g., http://127.0.0.1:11434 for Ollama)")]
         public string serviceUrl = "http://127.0.0.1:11434";
 
         [Tooltip("API endpoint path (e.g., /api/generate for Ollama)")]
         public string endpointPath = "/api/generate";
 
-        [Tooltip("Model name to use (e.g., llama3, gpt-4, etc.)")]
+        [Tooltip("Model name to use (e.g., llama3, gpt-4, gemini-pro, etc.)")]
         public string modelName = "llama3";
+
+        [Header("Authentication")]
+        [Tooltip("API Key for cloud providers (Gemini, OpenAI, Azure). Leave empty for local Ollama.")]
+        [TextArea(1, 3)]
+        public string apiKey = "";
 
         [Header("Request Settings")]
         [Tooltip("Maximum number of tokens in the response")]
