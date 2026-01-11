@@ -10,7 +10,8 @@ namespace LanguageTutor.Data
         Ollama,
         Gemini,
         OpenAI,
-        Azure
+        Azure,
+        HuggingFace
     }
 
     /// <summary>

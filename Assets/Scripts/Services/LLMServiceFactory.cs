@@ -41,6 +41,10 @@ namespace LanguageTutor.Services
                     Debug.LogWarning("[LLMServiceFactory] Azure provider not yet implemented. Falling back to Ollama.");
                     return new OllamaService(config, coroutineRunner);
 
+                case LLMProvider.HuggingFace:
+                    Debug.Log("[LLMServiceFactory] Creating HuggingFace service");
+                    return new HuggingFaceService(config, coroutineRunner);
+
                 default:
                     throw new NotSupportedException($"LLM provider '{config.provider}' is not supported");
             }

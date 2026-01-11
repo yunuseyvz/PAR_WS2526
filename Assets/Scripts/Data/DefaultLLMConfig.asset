@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb5249611a312749a626692e566b083, type: 3}
   m_Name: DefaultLLMConfig
   m_EditorClassIdentifier: Assembly-CSharp::LanguageTutor.Data.LLMConfig
-  provider: 1
+  provider: 4
   serviceUrl: http://localhost:11434
   endpointPath: /api/generate
-  modelName: gemini-2.5-flash
+  modelName: google/gemma-3-27b-it
   apiKey: 
   maxTokens: 512
   temperature: 1
