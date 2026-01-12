@@ -111,13 +111,6 @@ When contributing code:
 - **[SETUP_GUIDE.md](Assets/_Project/SETUP_GUIDE.md)** - Complete setup instructions
 - **[ARCHITECTURE.md](Assets/_Project/ARCHITECTURE.md)** - Architecture overview and extension guide
 
-## License
-
-[Your License Here]
-1.  Open **Unity Hub**.
-2.  Click **Add** and select the `PAR_WS2526` folder.
-3.  Click on the project name to open it in the Unity Editor.
-
 ## Git LFS Configuration
 
 This repository is configured to track the following file types with Git LFS:
